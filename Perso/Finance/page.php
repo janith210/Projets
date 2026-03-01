@@ -1,13 +1,11 @@
 <?php
 try {
-    // On s'adapte à MySQL (XAMPP)
     $host = 'localhost';
     $dbname = 'bourse_db';
     $user = 'root';
     $pass = '';
     $conn = new PDO("mysql:host=localhost;dbname=bourse_db", "root", "");
     
-    // Ton reste de code (prepare, execute, fetchAll) reste le même !
     $requete = "SELECT * FROM historique"; 
     $stmt = $conn->prepare($requete);
     $stmt->execute();
