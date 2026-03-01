@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1tkvrkd1li8h"]
+
+[ext_resource type="Texture2D" uid="uid://c7hte6r4bpky8" path="res://game/assets/assets_simple/value_progressbar.png" id="1_akc7v"]
+[ext_resource type="Script" uid="uid://cxvn0n2hm2mxc" path="res://game/scenes/progress_bar.gd" id="2_3s3ca"]
+[ext_resource type="AudioStream" uid="uid://fpwwguwwyvye" path="res://game/audio/bois.wav" id="3_5bc3i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3s3ca"]
+texture = ExtResource("1_akc7v")
+
+[node name="mini_jeu_marteau" type="ProgressBar"]
+offset_left = 680.0
+offset_top = 766.0
+offset_right = 1027.0
+offset_bottom = 837.0
+theme_override_styles/fill = SubResource("StyleBoxTexture_3s3ca")
+step = 0.1
+value = 100.0
+show_percentage = false
+script = ExtResource("2_3s3ca")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5bc3i")

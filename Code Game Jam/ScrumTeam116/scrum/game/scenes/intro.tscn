@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr7vg11rq7v1p"]
+
+[ext_resource type="Script" path="res://game/scenes/intro.gd" id="1_h5ynt"]
+[ext_resource type="Texture2D" uid="uid://bmdq253n7j1fp" path="res://game/assets/Ecran_Accueil.png" id="2_watij"]
+
+[sub_resource type="Animation" id="Animation_h5ynt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RichTextLabel2:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_d516q"]
+resource_name = "animation2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RichTextLabel2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.8, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_gxyeh"]
+resource_name = "apparition"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_watij"]
+_data = {
+&"RESET": SubResource("Animation_h5ynt"),
+&"animation2": SubResource("Animation_d516q"),
+&"apparition": SubResource("Animation_gxyeh")
+}
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_h5ynt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../EcranAccueil/RichTextLabel")
+libraries = {
+&"": SubResource("AnimationLibrary_watij")
+}
+
+[node name="EcranAccueil" type="Sprite2D" parent="."]
+position = Vector2(860, 439.75)
+scale = Vector2(3.22097, 2.935)
+texture = ExtResource("2_watij")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EcranAccueil"]
+offset_left = -213.91
+offset_top = -116.44
+offset_right = 182.09
+offset_bottom = -1.43951
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "Après une soirée bien arrosée avec la Scrum Team I116,             tu t'allonges sur ton lit.."
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="EcranAccueil"]
+offset_left = -213.0
+offset_top = 18.0
+offset_right = 207.0
+offset_bottom = 161.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "Tu te réveilles brusquement à 10h57. Tes parents arrivent à 11h. DÉPÊCHE-TOI !"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0

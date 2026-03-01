@@ -1,0 +1,2 @@
+Important : vous avez normalement un lien symbolique dans votre home qui pointe vers le répertoire web
+Lien pour afficher votre projet : https://projets.iut-orsay.fr/saes3-rstinus/

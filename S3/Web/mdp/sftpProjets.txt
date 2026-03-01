@@ -1,0 +1,5 @@
+FQDN : projets.iut-orsay.fr
+Port : 6022
+Authentification :
+  * Identifiant : identifiant court
+  * Mot de passe : le mot de passe de votre compte informatique

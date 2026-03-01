@@ -1,0 +1,11 @@
+{
+    "name": "IUT projets",
+    "host": "projets.iut-orsay.fr",
+    "protocol": "sftp",
+    "port": 6022,
+    "username": "saes3-rstinus",
+    "uploadOnSave": true,
+    "useTempFile": false,
+    "openSsh": false,
+    "downloadOnOpen": true
+}

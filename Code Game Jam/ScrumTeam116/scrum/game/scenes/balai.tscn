@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://y2riy25vtchj"]
+
+[ext_resource type="Script" uid="uid://bu1i4pb48a84r" path="res://game/scenes/balai.gd" id="1_b6f4e"]
+[ext_resource type="Texture2D" uid="uid://cyun4ceb6yu6u" path="res://game/assets/assets_simple/Balai.png" id="2_cr2nb"]
+[ext_resource type="Script" uid="uid://b2o28pr747uv5" path="res://game/scenes/anim_balai.gd" id="3_3niln"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plicb"]
+radius = 12.0416
+
+[node name="Balai" type="Node2D"]
+position = Vector2(260, 185)
+
+[node name="Balai" type="Area2D" parent="."]
+position = Vector2(-9, -1)
+script = ExtResource("1_b6f4e")
+
+[node name="Balai" type="Sprite2D" parent="Balai"]
+position = Vector2(13, 3.8147e-06)
+scale = Vector2(0.679687, 0.675781)
+texture = ExtResource("2_cr2nb")
+script = ExtResource("3_3niln")
+
+[node name="CollisionBalai" type="CollisionShape2D" parent="Balai"]
+visible = false
+position = Vector2(13, 8)
+shape = SubResource("CircleShape2D_plicb")
+debug_color = Color(0.767799, 0.318212, 0.791354, 0.42)
+
+[connection signal="body_entered" from="Balai" to="Balai" method="_on_body_entered"]

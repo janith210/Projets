@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwo0kvw25qoay"]
+
+[ext_resource type="Texture2D" uid="uid://dd1b3b45sog8y" path="res://game/assets/assets_jeu/poussiere.png" id="1_d5p0x"]
+[ext_resource type="Script" path="res://game/scenes/poussiere.gd" id="2_7vco4"]
+
+[node name="poussiere" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("1_d5p0x")
+script = ExtResource("2_7vco4")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

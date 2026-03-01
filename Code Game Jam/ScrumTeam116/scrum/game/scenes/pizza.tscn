@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgyogtcrp1s3d"]
+
+[ext_resource type="Texture2D" uid="uid://1b0j5n8yw41w" path="res://game/assets/assets_simple/Pizza.png" id="1_7bmvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74agt"]
+
+[node name="Pizza" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="." groups=["a_balayer"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_74agt")
+debug_color = Color(0.7743, 0.363685, 0.65146, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_7bmvi")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["a_balayer"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_74agt")
+debug_color = Color(0.7743, 0.363685, 0.65146, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
+texture = ExtResource("1_7bmvi")

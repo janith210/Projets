@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmjwtqsivsdw6"]
+
+[ext_resource type="Script" uid="uid://dunmmd1wom6es" path="res://game/scenes/credits.gd" id="1_c6cjy"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1752.0
+offset_bottom = 904.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 40.0
+offset_right = 1632.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Design Graphiques : Matthieu Charroin, Pierre Sounouvou, Hugo Da Silva Almeida
+Programmation: Janith Mapityage, Hugo Da Silva Almeida, Grabiel Delpha, Matthieu Charroin
+ "
+script = ExtResource("1_c6cjy")

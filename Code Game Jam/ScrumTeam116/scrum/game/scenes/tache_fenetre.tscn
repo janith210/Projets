@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck1yb5l0yvdh5"]
+
+[ext_resource type="Script" uid="uid://bhkg50vfijvse" path="res://game/scenes/tache_fenetre.gd" id="1_d8nba"]
+[ext_resource type="PackedScene" uid="uid://tgh3lihq5tms" path="res://game/scenes/tache.tscn" id="1_j0nhl"]
+[ext_resource type="Texture2D" uid="uid://bu2g3drrg4j45" path="res://game/assets/assets_simple/rideaufenetreminijeu.png" id="3_w4rdo"]
+[ext_resource type="AudioStream" uid="uid://byf33qa16kn14" path="res://game/audio/water.wav" id="4_ok32t"]
+
+[node name="TacheFenetre" type="Node2D"]
+position = Vector2(113, 97)
+script = ExtResource("1_d8nba")
+
+[node name="tache" parent="." instance=ExtResource("1_j0nhl")]
+position = Vector2(-18, 71)
+scale = Vector2(-4.06601, -4.06601)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(769, 401)
+scale = Vector2(4.00521, 4.00521)
+texture = ExtResource("3_w4rdo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ok32t")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

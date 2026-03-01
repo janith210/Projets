@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://dasxrcqrq5xs4"]
+
+[ext_resource type="Texture2D" uid="uid://vw12qnx3sa1m" path="res://game/assets/assets_simple/health_bar.png" id="1_3gt15"]
+[ext_resource type="Script" uid="uid://bgpa0h3lk2mqd" path="res://game/scenes/health_bar.gd" id="2_fywlc"]
+[ext_resource type="Shader" uid="uid://bwahfwwxsqg3y" path="res://game/shaders/drunk_effect.gdshader" id="3_8jy4f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jy4f"]
+texture = ExtResource("1_3gt15")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fywlc"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_8jy4f"]
+font_size = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqq2n"]
+shader = ExtResource("3_8jy4f")
+shader_parameter/distortion_strength = 0.02
+shader_parameter/wave_speed = 3.0
+shader_parameter/blur_amount = 1.0
+
+[node name="health_bar" type="CanvasLayer"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 1380.0
+offset_top = 194.0
+offset_right = 1639.0
+offset_bottom = 245.0
+theme_override_styles/fill = SubResource("StyleBoxTexture_8jy4f")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+script = ExtResource("2_fywlc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 505.0
+offset_top = 71.0
+offset_right = 1171.0
+offset_bottom = 152.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 534.0
+offset_top = 88.0
+offset_right = 1142.0
+offset_bottom = 133.0
+text = "Vous êtes étourdit pendant 5 secondes."
+label_settings = SubResource("LabelSettings_fywlc")
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 507.0
+offset_top = 72.0
+offset_right = 1173.0
+offset_bottom = 153.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 618.0
+offset_top = 88.0
+offset_right = 1081.0
+offset_bottom = 133.0
+text = "Faites attention a votre santé."
+label_settings = SubResource("LabelSettings_8jy4f")
+horizontal_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_eqq2n")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

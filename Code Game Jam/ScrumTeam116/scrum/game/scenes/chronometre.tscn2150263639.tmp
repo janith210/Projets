@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq0hfbeh1hmm3"]
+
+[ext_resource type="Script" uid="uid://8n7ye3ljpm47" path="res://game/scenes/chronometre.gd" id="1_nk5s5"]
+[ext_resource type="Script" uid="uid://b5hrcdm7l1y56" path="res://game/scenes/EndText.gd" id="2_onjiq"]
+
+[sub_resource type="FontFile" id="FontFile_nk5s5"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nk5s5"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_nk5s5")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.0
+offset_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_fonts/font = SubResource("FontFile_nk5s5")
+theme_override_font_sizes/font_size = 72
+text = "duisshfsufhsufhsui"
+label_settings = SubResource("LabelSettings_nk5s5")
+script = ExtResource("2_onjiq")

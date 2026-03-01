@@ -1,0 +1,16 @@
+A faire pour le site : 
+page de connexion
+
+page accueil étudiant -> page signalement problème
+page accueil enseignant
+
+page info d'étudiant
+page info d'enseignant
+
+page de groupe
+page de composition des groupes
+page de contrainte
+
+page sondage
+page réponse sondage
+

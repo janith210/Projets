@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://j1gtx3m6fcml"]
+
+[ext_resource type="Texture2D" uid="uid://u637dbncx32t" path="res://game/assets/assets_simple/Assiete.png" id="1_ycy0j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ol5oy"]
+radius = 4.16985
+height = 23.3683
+
+[node name="assietteSale" type="Area2D" groups=["a_balayer"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ycy0j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.599887
+shape = SubResource("CapsuleShape2D_ol5oy")

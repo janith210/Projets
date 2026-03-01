@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn8jiom8opqmv"]
+
+[ext_resource type="Texture2D" uid="uid://bd4o1jwgtvt0y" path="res://game/assets/assets_jeu/fenetre.png" id="1_q2wlu"]
+[ext_resource type="Script" uid="uid://dr56beixq8lg2" path="res://game/scenes/fenetre.gd" id="1_qgy0g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2wlu"]
+size = Vector2(40, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgy0g"]
+size = Vector2(32, 4)
+
+[node name="fenetre" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_qgy0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_q2wlu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_q2wlu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_qgy0g")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

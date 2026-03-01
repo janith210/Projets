@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://hm3hkjcs8ror"]
+
+[ext_resource type="Script" uid="uid://b5hrcdm7l1y56" path="res://game/scenes/EndText.gd" id="1_gon4i"]
+[ext_resource type="AudioStream" uid="uid://c68eu3w8crnk1" path="res://game/audio/lose.wav" id="2_fplhc"]
+[ext_resource type="Script" uid="uid://dup651tsq54fa" path="res://game/scenes/bouttonEnd.gd" id="3_tnf0l"]
+
+[sub_resource type="Gradient" id="Gradient_vtp16"]
+colors = PackedColorArray(0, 0, 0, 1, 0.682353, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gon4i"]
+gradient = SubResource("Gradient_vtp16")
+fill = 2
+fill_from = Vector2(0.46, 0.47)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fplhc"]
+texture = SubResource("GradientTexture2D_gon4i")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fplhc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnf0l"]
+bg_color = Color(0.74558, 0.74558, 0.74558, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdxo4"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2stk"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Perdu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1707.0
+offset_bottom = 883.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fplhc")
+
+[node name="EndTxt" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -503.0
+offset_top = -35.0
+offset_right = 345.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 44
+horizontal_alignment = 1
+script = ExtResource("1_gon4i")
+duree_apparition = 2.5
+duree_disparition = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="EndTxt"]
+stream = ExtResource("2_fplhc")
+autoplay = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 373.0
+offset_right = 1020.0
+offset_bottom = 482.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fplhc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tnf0l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vdxo4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i2stk")
+text = "Rejouer"
+script = ExtResource("3_tnf0l")
+
+[connection signal="pressed" from="Button" to="EndTxt" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

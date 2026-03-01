@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc1nt4k48ndh4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gf21a"]
+font_size = 32
+
+[node name="tuto_porte_cassee" type="CanvasLayer"]
+
+[node name="LabelTutoPorte" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 507.0
+offset_top = 394.0
+offset_right = 1157.0
+offset_bottom = 439.0
+text = "Vous avez besoin du marteaux pour cela !!"
+label_settings = SubResource("LabelSettings_gf21a")

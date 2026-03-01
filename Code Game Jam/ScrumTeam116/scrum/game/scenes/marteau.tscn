@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvd8ihv2cp5k3"]
+
+[ext_resource type="Script" uid="uid://cop2v833o3g77" path="res://game/scenes/marteau.gd" id="1_v00tl"]
+[ext_resource type="Texture2D" uid="uid://dd0wqws0518xx" path="res://game/assets/assets_simple/Marteau.png" id="2_v00tl"]
+[ext_resource type="Script" uid="uid://b2o28pr747uv5" path="res://game/scenes/anim_balai.gd" id="3_3wvor"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plicb"]
+radius = 12.0416
+
+[node name="Marteau" type="Node2D"]
+position = Vector2(260, 185)
+
+[node name="Marteau" type="Area2D" parent="."]
+position = Vector2(-9, -1)
+script = ExtResource("1_v00tl")
+
+[node name="sceau" type="Sprite2D" parent="Marteau"]
+position = Vector2(15, 8)
+scale = Vector2(0.46875, 0.453125)
+texture = ExtResource("2_v00tl")
+script = ExtResource("3_3wvor")
+
+[node name="CollisionMarteau" type="CollisionShape2D" parent="Marteau"]
+position = Vector2(13, 9)
+shape = SubResource("CircleShape2D_plicb")
+debug_color = Color(0.767799, 0.318212, 0.791354, 0.42)
+
+[connection signal="body_entered" from="Marteau" to="Marteau" method="_on_body_entered"]

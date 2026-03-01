@@ -1,0 +1,71 @@
+🛠️ Suggestions de Procédures et Fonctions à Ajouter
+
+En analysant la structure de votre base de données et les procédures existantes, voici une liste de procédures et de fonctions (sans le code SQL) qui seraient très utiles pour gérer la logique de votre application, notamment pour l'affectation des utilisateurs aux rôles et la gestion des groupes.
+1. Procédures liées aux Utilisateurs et Rôles
+
+Votre structure gère les responsabilités via une hiérarchie d'enseignants (AG_Enseignant -> AG_EnseignantResponsable -> AG_EnseignantResponsableFilière, etc.). Vous devez pouvoir lier un utilisateur à ces rôles.
+
+    affecterRoleEnseignantResponsable : Lier un enseignant (AG_Enseignant) au rôle générique AG_EnseignantResponsable.
+
+    affecterRoleEnseignantResponsableFiliere : Lier un enseignant responsable au rôle spécifique de responsable de filière.
+
+    affecterRoleEnseignantResponsableAnnee : Lier un enseignant responsable au rôle spécifique de responsable d'année.
+
+    affecterRoleEnseignantResponsableSemestre : Lier un enseignant responsable au rôle spécifique de responsable de semestre.
+
+    supprimerRoleEnseignantResponsable : Retirer le rôle générique d'enseignant responsable.
+
+    verifierLoginExistant : Fonction qui renvoie TRUE ou FALSE si un LoginUtilisateur est déjà utilisé dans AG_Utilisateur pour éviter les doublons lors de la création.
+
+2. Procédures liées aux Groupes et Affiliation
+
+L'affectation des étudiants aux groupes et la gestion des groupes sont cruciales.
+
+    affecterEtudiantAGroupe : Mettre à jour NumGroupe de la table AG_Etudiant pour affecter un étudiant à un groupe.
+
+    creerGroupe : Insérer une nouvelle ligne dans AG_Groupe (avec gestion des responsables).
+
+    modifierGroupe : Modifier la capacité ou le responsable d'un groupe.
+
+    supprimerGroupe : Supprimer un groupe existant dans AG_Groupe.
+
+    lierContrainteAGroupe : Insérer un lien dans la table AG_possede pour affecter une contrainte à un groupe.
+
+    modifierLienContrainteGroupe : Mettre à jour l'OrdreContrainte dans AG_possede.
+
+    supprimerLienContrainteGroupe : Supprimer une ligne dans AG_possede.
+
+    compterEtudiantsDansGroupe : Fonction qui renvoie le nombre d'étudiants actuellement affectés à un groupe donné.
+
+3. Procédures liées aux Données
+
+    ajouterNote : Insérer une nouvelle ligne dans AG_Note.	FAIT
+
+    modifierNote : Mettre à jour la ValeurNote d'une note existante.	FAIT
+
+    supprimerNote : Supprimer une ligne dans AG_Note.
+
+    ajouterReponseSondage : Insérer une ligne dans AG_ReponseSondage.
+
+💥 Template de Triggers à Faire
+
+Les triggers sont parfaits pour garantir l'intégrité et la cohérence des données automatiquement, sans nécessiter de code d'application.
+
+Voici des scénarios où des triggers seraient très efficaces, avec un template générique (sans code) :
+1. Trigger pour le Hachage du Mot de Passe
+
+C'est essentiel pour la sécurité. Le mot de passe ne doit jamais être stocké en clair.
+Trigger	Description	Moment	Événement	Table
+tr_AG_Utilisateur_HashPassword	Hacher le MotDePasseUtilisateur avant l'insertion.	BEFORE INSERT	INSERT	AG_Utilisateur
+tr_AG_Utilisateur_UpdateHashPassword	Hacher le MotDePasseUtilisateur avant la mise à jour (si le champ est modifié).	BEFORE UPDATE	UPDATE	AG_Utilisateur
+2. Trigger pour la Cohérence de la Capacité du Groupe
+
+Si la capacité d'un groupe est mise à jour, vous devez vous assurer qu'elle n'est pas inférieure au nombre d'étudiants déjà affectés à ce groupe.
+Trigger	Description	Moment	Événement	Table
+tr_AG_Groupe_CheckCapacite	Vérifier que la nouvelle CapaciteGroupe est supérieure ou égale au nombre d'étudiants existants dans ce groupe.	BEFORE UPDATE	UPDATE	AG_Groupe
+3. Trigger pour la Cohérence du typeUtilisateur
+
+Un utilisateur ne peut être lié qu'à la table Étudiant OU Enseignant. Lorsqu'un enseignant ou un étudiant est créé, le NumUtilisateur doit pointer vers un utilisateur du bon type dans AG_Utilisateur.
+Trigger	Description	Moment	Événement	Table
+tr_AG_Enseignant_CheckType	Vérifier que le typeUtilisateur dans AG_Utilisateur est bien 'enseignant' lors de l'insertion dans AG_Enseignant.	BEFORE INSERT	INSERT	AG_Enseignant
+tr_AG_Etudiant_CheckType	Vérifier que le typeUtilisateur dans AG_Utilisateur est bien 'etudiant' lors de l'insertion dans AG_Etudiant.	BEFORE INSERT	INSERT	AG_Etudiant

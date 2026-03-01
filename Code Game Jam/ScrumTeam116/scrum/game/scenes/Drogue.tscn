@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxgivsghq3ny"]
+
+[ext_resource type="Script" uid="uid://bu4u2tuu6ox8m" path="res://game/scenes/drogue.gd" id="1_bo4ef"]
+[ext_resource type="Texture2D" uid="uid://ddj0qdxqsp6s2" path="res://game/assets/assets_simple/Drogue.png" id="2_bo4ef"]
+[ext_resource type="AudioStream" uid="uid://c8d0sulr5be0a" path="res://game/audio/smoke.wav" id="3_v0g8f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plicb"]
+radius = 12.0416
+
+[node name="Alcool" type="Node2D"]
+position = Vector2(260, 185)
+
+[node name="Drogue" type="Area2D" parent="."]
+position = Vector2(-9, -1)
+script = ExtResource("1_bo4ef")
+
+[node name="drogue" type="Sprite2D" parent="Drogue"]
+position = Vector2(14, -15)
+scale = Vector2(0.640625, 0.632813)
+texture = ExtResource("2_bo4ef")
+
+[node name="CollisionMarteau" type="CollisionShape2D" parent="Drogue"]
+position = Vector2(14, -16)
+shape = SubResource("CircleShape2D_plicb")
+debug_color = Color(0.767799, 0.318212, 0.791354, 0.42)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v0g8f")
+
+[connection signal="body_entered" from="Drogue" to="Drogue" method="_on_body_entered"]

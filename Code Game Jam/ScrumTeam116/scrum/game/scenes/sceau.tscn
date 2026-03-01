@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://oqno2ryja53i"]
+
+[ext_resource type="Script" uid="uid://bketd111qiaw2" path="res://game/scenes/sceau.gd" id="1_hi47q"]
+[ext_resource type="Texture2D" uid="uid://bi21755so44vo" path="res://game/assets/assets_simple/Sceau.png" id="2_hi47q"]
+[ext_resource type="Script" uid="uid://b2o28pr747uv5" path="res://game/scenes/anim_balai.gd" id="3_d48px"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plicb"]
+radius = 12.0416
+
+[node name="Sceau" type="Node2D"]
+position = Vector2(260, 185)
+
+[node name="Sceau" type="Area2D" parent="."]
+position = Vector2(-9, -1)
+script = ExtResource("1_hi47q")
+
+[node name="Sceau" type="Sprite2D" parent="Sceau"]
+position = Vector2(10, 8.00001)
+scale = Vector2(0.375, 0.398438)
+texture = ExtResource("2_hi47q")
+script = ExtResource("3_d48px")
+
+[node name="CollisionBalai" type="CollisionShape2D" parent="Sceau"]
+visible = false
+position = Vector2(11, 7)
+shape = SubResource("CircleShape2D_plicb")
+debug_color = Color(0.767799, 0.318212, 0.791354, 0.42)
+
+[connection signal="body_entered" from="Sceau" to="Sceau" method="_on_body_entered"]

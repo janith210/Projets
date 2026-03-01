@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://8hbmrh084nym"]
+
+[ext_resource type="Script" uid="uid://dfbnyv6101ps7" path="res://game/scenes/WinTxt.gd" id="1_1dc11"]
+[ext_resource type="Texture2D" uid="uid://dhe6ndy6qrc1f" path="res://game/assets/assets_simple/coupe.png" id="2_gpgx5"]
+[ext_resource type="AudioStream" uid="uid://bj02e01wo6yob" path="res://game/audio/win.wav" id="3_gpgx5"]
+[ext_resource type="Script" uid="uid://dup651tsq54fa" path="res://game/scenes/bouttonEnd.gd" id="4_2am8t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w75m6"]
+bg_color = Color(0.964742, 0.964742, 0.964742, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1dc11"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt1hh"]
+bg_color = Color(0.74558, 0.74558, 0.74558, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8kj1"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bnu1"]
+bg_color = Color(0.717647, 1, 1, 1)
+
+[node name="EcranVictoire" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1728.0
+offset_bottom = 888.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w75m6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(864, 368)
+scale = Vector2(2.875, 2.9375)
+texture = ExtResource("2_gpgx5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 104.0
+offset_right = 974.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Vous avez réussi à tout ranger à temps"
+script = ExtResource("1_1dc11")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gpgx5")
+autoplay = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 584.0
+offset_right = 1069.0
+offset_bottom = 693.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1dc11")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xt1hh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h8kj1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2bnu1")
+text = "Rejouer"
+script = ExtResource("4_2am8t")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

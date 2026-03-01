@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cabyu6lej78r8"]
+
+[ext_resource type="Texture2D" uid="uid://byvubdkgrmplu" path="res://game/assets/assets_simple/Porte.png" id="1_4iyfh"]
+[ext_resource type="Script" uid="uid://ckfb8uy0qmlyv" path="res://game/scenes/porte_casse.gd" id="1_ix8fb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix8fb"]
+size = Vector2(25, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qv6wp"]
+size = Vector2(21, 20)
+
+[node name="PorteCasse" type="Node2D"]
+
+[node name="PorteCasse" type="Area2D" parent="."]
+script = ExtResource("1_ix8fb")
+
+[node name="PorteCasse" type="Sprite2D" parent="PorteCasse"]
+texture = ExtResource("1_4iyfh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PorteCasse"]
+shape = SubResource("RectangleShape2D_ix8fb")
+debug_color = Color(0.709119, 0.361632, 0.828259, 0.42)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_qv6wp")
+
+[connection signal="body_entered" from="PorteCasse" to="PorteCasse" method="_on_body_entered"]

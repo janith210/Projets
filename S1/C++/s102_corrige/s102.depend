@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1737560071 source:c:\users\infoexam\downloads\s102_corrige\s102_corrige\src\dictionnaire.cpp
+	"Dictionnaire.h"
+	<fstream>
+	<iostream>
+
+1737560071 source:c:\users\infoexam\downloads\s102_corrige\s102_corrige\src\image.cpp
+	<SDL_image.h>
+	<exception>
+	"Image.h"
+
+1737560071 source:c:\users\infoexam\downloads\s102_corrige\s102_corrige\src\moteur.cpp
+	<SDL_image.h>
+	"Moteur.h"
+
+1737560071 source:c:\users\infoexam\downloads\s102_corrige\s102_corrige\src\objet.cpp
+	"Objet.h"
+
+1737560071 source:c:\users\infoexam\downloads\s102_corrige\s102_corrige\src\personnage.cpp
+	"Personnage.h"
+
+1737560071 source:c:\users\infoexam\downloads\s102_corrige\s102_corrige\src\tuile.cpp
+	"Tuile.h"
+	<iostream>
+
+1737562288 source:c:\users\infoexam\downloads\s102_corrige\s102_corrige\src\main.cpp
+	<vector>
+	"Moteur.h"
+	"Image.h"
+	"Personnage.h"
+	"Dictionnaire.h"
+	"Niveau.h"
+
+1737563229 source:c:\users\infoexam\downloads\s102_corrige\s102_corrige\src\niveau.cpp
+	"Niveau.h"
+	<fstream>
+

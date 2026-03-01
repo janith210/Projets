@@ -1,0 +1,5 @@
+* text=auto
+*.java text
+*.php text
+*.sql text
+*.md text

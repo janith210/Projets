@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://befnpwxveneh7"]
+
+[ext_resource type="Script" uid="uid://dtbirk3756a50" path="res://game/scenes/mini_jeu_balai.gd" id="1_h65gy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ewmoy"]
+font_size = 48
+
+[node name="MinijeuBalai" type="CanvasLayer"]
+script = ExtResource("1_h65gy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_bottom = 0.044
+offset_left = 147.0
+offset_top = 63.0
+offset_right = 1522.0
+offset_bottom = 119.28
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="time" type="Label" parent="."]
+offset_right = 586.0
+offset_bottom = 83.0
+
+[node name="instructions" type="Label" parent="."]
+offset_left = 154.0
+offset_top = 75.0
+offset_right = 1485.0
+offset_bottom = 212.0
+text = "Vite !! Passe la souris sur les poussières pour les balayer !!
+"
+label_settings = SubResource("LabelSettings_ewmoy")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

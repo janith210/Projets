@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://djskpbj41nth0"]
+
+[ext_resource type="Texture2D" uid="uid://kw84y5jpr401" path="res://game/assets/assets_simple/Vomi.png" id="1_by5ng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl1mq"]
+size = Vector2(26, 26)
+
+[node name="Vomi" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="." groups=["a_balayer"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_kl1mq")
+debug_color = Color(0.720238, 0.303227, 0.923317, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_by5ng")

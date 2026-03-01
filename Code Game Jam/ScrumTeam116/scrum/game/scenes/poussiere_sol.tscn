@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3s4vyk3isfxu"]
+
+[ext_resource type="Texture2D" uid="uid://dd1b3b45sog8y" path="res://game/assets/assets_jeu/poussiere.png" id="1_odpef"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3tqf"]
+radius = 61.0082
+
+[node name="poussiereSol" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_odpef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 7)
+shape = SubResource("CircleShape2D_q3tqf")

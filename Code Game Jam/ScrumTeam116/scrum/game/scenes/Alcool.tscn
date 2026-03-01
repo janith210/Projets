@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://desrvu1luimap"]
+
+[ext_resource type="Script" uid="uid://00krbvldc4d3" path="res://game/scenes/alcool.gd" id="1_bdje3"]
+[ext_resource type="Texture2D" uid="uid://bcnkdtvfo5rjw" path="res://game/assets/assets_simple/Alcool.png" id="2_bdje3"]
+[ext_resource type="AudioStream" uid="uid://ctaq2hwgc1eer" path="res://game/audio/drink.wav" id="3_xba4f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plicb"]
+radius = 12.0416
+
+[node name="Item" type="Node2D"]
+position = Vector2(260, 185)
+
+[node name="Alcool" type="Area2D" parent="."]
+position = Vector2(-9, -1)
+script = ExtResource("1_bdje3")
+
+[node name="Alcool" type="Sprite2D" parent="Alcool"]
+position = Vector2(14, -15)
+scale = Vector2(0.640625, 0.632813)
+texture = ExtResource("2_bdje3")
+
+[node name="CollisionMarteau" type="CollisionShape2D" parent="Alcool"]
+position = Vector2(14, -16)
+shape = SubResource("CircleShape2D_plicb")
+debug_color = Color(0.767799, 0.318212, 0.791354, 0.42)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xba4f")
+volume_db = 4.333
+
+[connection signal="body_entered" from="Alcool" to="Alcool" method="_on_body_entered"]

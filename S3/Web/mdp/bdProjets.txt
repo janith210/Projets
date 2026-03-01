@@ -1,0 +1,13 @@
+Identifiant : saes3-rstinus
+Mot de passe : oQEgrzbFxrRmpTYE
+Nom de la base : saes3-rstinus
+FQDN (à utiliser au niveau du code PHP) : localhost
+
+FQDN : https://projets.iut-orsay.fr/phpmyadmin/
+- Première authentification (authentification au niveau du serveur web)
+  * Identifiant : identifiant court
+  * Mot de passe : le mot de passe de votre compte informatique
+
+- Deuxième authentification (authentification au niveau de PHPMYADMIN)
+  * Identifiant : saes3-rstinus
+  * Mot de passe : oQEgrzbFxrRmpTYE

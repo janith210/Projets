@@ -1,0 +1,14 @@
+Pour l'application Java 
+But -> Implémenter en MVC la création de groupe en JAVA
+
+	Liste à faire (Branche feature/groupes-app pour l'app)
+
+	- MVC accueil (ModeleAcueil, VueAccueil, ControleurAccueil) branche feature/accueil (branche créée)
+
+	- MVC manuel (ModeleManuel, VueManuel, ControleurManuel) branche feature/accueil (branche créée)
+
+	- MVC automatique (ModeleAutomatique, VueAutomatique, ControleurAutomatique) branche feature/automatique (branche PAS créée)
+
+	- MVC creation-man (ModeleCreationMan, VueCreationMan, ControleurCreationMan) branche feature/creation-man (branche PAS créée)
+
+	- MVC creation-auto (ModeleCreationAuto, VueCreationAuto, ControleurCreaionAuto) branche feature/creation-auto (branche PAScréée)
