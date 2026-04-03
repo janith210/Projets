@@ -1,0 +1,462 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Palette Noir & Or (Luxe) */
+:root {
+  --noir-profond: #0E0E0E;
+  --or-metallique: #D4AF37;
+  --gris-anthracite: #2C2C2C;
+  --blanc-ivoire: #F8F5F0;
+  --gris-clair: #DADADA;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--noir-profond);
+  color: var(--gris-clair);
+  scroll-behavior: smooth;
+  line-height: 1.7;
+  /* Animation d'entrée de la page globale */
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* =========================================
+   2. TYPOGRAPHIE & TITRES
+   ========================================= */
+h1, h2, h3 {
+  font-weight: 600;
+  color: var(--or-metallique);
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 3.8rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 25px rgba(212,175,55,0.4);
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.8em;
+  display: inline-block;
+  border-bottom: 2px solid var(--or-metallique);
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 1.2em;
+}
+
+/* Effet de brillance (Shimmer) sur les titres */
+h1::after, h2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-25deg);
+  animation: shimmer 6s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   3. NAVIGATION
+   ========================================= */
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 80px;
+  background: rgba(14, 14, 14, 0.95); 
+  display: flex;
+  align-items: center;
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  animation: fadeSlideDown 0.8s ease-out;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.nav-left img {
+  height: 60px;
+  filter: brightness(0) invert(1);
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-center ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-center ul li a {
+  color: var(--gris-clair);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  position: relative;
+  font-size: 1.1rem;
+  padding: 10px;
+}
+
+.nav-center ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--or-metallique);
+  transition: width 0.3s ease;
+}
+
+.nav-center ul li a:hover {
+  color: var(--or-metallique);
+}
+
+.nav-center ul li a:hover::after {
+  width: 100%;
+}
+
+/* =========================================
+   4. HEADER (HERO SECTION)
+   ========================================= */
+header {
+  background: linear-gradient(135deg, var(--noir-profond), var(--gris-anthracite));
+  color: var(--blanc-ivoire);
+  text-align: center;
+  padding: 180px 20px 120px; 
+  position: relative;
+  overflow: hidden;
+}
+
+header::before, header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+header::before {
+  top: 10%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(212,175,55,0.25), transparent);
+}
+
+header::after {
+  bottom: 10%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212,175,55,0.15), transparent);
+}
+
+.texte-superpose {
+  position: relative;
+  z-index: 1;
+}
+
+.texte-superpose p {
+  font-size: 1.5rem;
+  color: var(--gris-clair);
+  margin-top: 20px;
+}
+
+/* =========================================
+   5. SECTIONS GÉNÉRALES ET ANIMATIONS JS
+   ========================================= */
+section {
+  padding: 3em 2em;
+  margin: 2em auto;
+  max-width: 1000px;
+  background: var(--gris-anthracite);
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+}
+
+section:hover {
+  box-shadow: 0 8px 30px rgba(212,175,55,0.15);
+}
+
+/* État de départ : les éléments sont cachés plus bas */
+section, .carte-projet {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+/* État d'arrivée : le Javascript ajoute la classe "visible" */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   6. CARTES PROJETS & INTÉRÊTS
+   ========================================= */
+.grille-projets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2em;
+}
+
+.carte-projet, .carte-interet {
+  background: var(--blanc-ivoire);
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.carte-projet:hover, .carte-interet:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.25);
+}
+
+.carte-projet img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.carte-projet h3 {
+  color: var(--noir-profond);
+  margin: 1em 0 0.5em;
+  font-size: 1.3rem;
+}
+
+.carte-projet p {
+  color: var(--gris-anthracite);
+  padding: 0 1em 1.5em;
+  font-size: 0.95rem;
+}
+
+.carte-projet:nth-child(2){ transition-delay: 0.2s; }
+.carte-projet:nth-child(3){ transition-delay: 0.4s; }
+.carte-projet:nth-child(4){ transition-delay: 0.6s; }
+
+/* Grille Intérêts */
+.grille-interets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2em;
+  margin-top: 1.5em;
+}
+
+.carte-interet {
+  padding: 1.5em;
+}
+
+.carte-interet img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
+.carte-interet p {
+  color: var(--noir-profond);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.parent-button {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* =========================================
+   7. BOUTONS & RÉSEAUX SOCIAUX
+   ========================================= */
+.button {
+  background: linear-gradient(90deg, var(--or-metallique), #bfa334);
+  color: var(--noir-profond);
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(212,175,55,0.3);
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212,175,55,0.5);
+  filter: brightness(1.1);
+}
+
+/* Lien LinkedIn */
+.linkedin-link {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.linkedin-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #0A66C2; /* Bleu LinkedIn */
+  background: var(--blanc-ivoire);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+
+.linkedin-link a:hover {
+  transform: scale(1.05);
+}
+
+.linkedin-link img {
+  width: 24px;
+  height: 24px;
+}
+
+
+
+.github-link {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.github-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  background: gray;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+
+.github-link a:hover {
+  transform: scale(1.05);
+}
+
+.github-link img {
+  width: 24px;
+  height: 24px;
+}
+
+/* =========================================
+   8. FOOTER & RESPONSIVE
+   ========================================= */
+footer {
+  background: var(--noir-profond);
+  text-align: center;
+  padding: 2em 0;
+  color: var(--gris-clair);
+  border-top: 1px solid var(--gris-anthracite);
+  margin-top: 3em;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  
+  .nav-center ul { 
+    gap: 15px; 
+    font-size: 0.9rem;
+  }
+  
+  .nav-container {
+    padding: 0 20px;
+  }
+
+  section { 
+    padding: 1.5em; 
+    width: 90%;
+  }
+}
+
+/* =========================================
+   9. SECTION COMPÉTENCES (BADGES & IMAGES)
+   ========================================= */
+.grille-competences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.badge-competence {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 10px 20px;
+  border-radius: 50px;
+  color: var(--blanc-ivoire);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.badge-competence:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+  border-color: var(--or-metallique); /* La bordure s'illumine au survol */
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.badge-competence img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}

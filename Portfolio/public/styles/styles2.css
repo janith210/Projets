@@ -1,0 +1,330 @@
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Palette Noir & Or === */
+:root {
+  --noir-profond: #0E0E0E;
+  --or-metallique: #D4AF37;
+  --gris-anthracite: #2C2C2C;
+  --blanc-ivoire: #F8F5F0;
+  --gris-clair: #DADADA;
+}
+
+/* === Base === */
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--noir-profond);
+  color: var(--gris-clair);
+  scroll-behavior: smooth;
+  line-height: 1.7;
+}
+
+/* === Titres === */
+h1, h2, h3 {
+  font-weight: 600;
+  color: var(--or-metallique);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 1.5em 0 0.8em;
+  border-bottom: 2px solid var(--or-metallique);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-top: 1em;
+}
+
+/* === Navigation === */
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background: var(--noir-profond);
+  border-bottom: 1px solid var(--gris-anthracite);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.nav-left img {
+  height: 60px;
+  filter: brightness(0) invert(1);
+}
+
+.nav-center ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-center ul li a {
+  color: var(--gris-clair);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-center ul li a:hover {
+  color: var(--or-metallique);
+}
+
+/* === Header === */
+header {
+  text-align: center;
+  padding: 140px 20px 100px;
+  background: linear-gradient(135deg, var(--noir-profond), var(--gris-anthracite));
+}
+
+.texte-superpose p {
+  font-size: 1.4rem;
+  color: var(--gris-clair);
+}
+
+/* === Section === */
+section {
+  padding: 3em 2em;
+  margin: 2em auto;
+  max-width: 1100px;
+  background: var(--gris-anthracite);
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Section Projets (Flex) === */
+/* === Section Projets - Style clair === */
+#projets {
+  background:var(--gris-anthracite);
+  padding: 3em 2em;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  margin: 3em auto;
+  max-width: 1000px;
+}
+
+.grille-projets {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.carte-projet {
+  background:   var(--noir-profond);
+  border-radius: 10px;
+  padding: 1.5em 2em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carte-projet:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.carte-projet h2 {
+  color: #004aad; /* bleu fort */
+  font-size: 1.5rem;
+  margin-bottom: 0.4em;
+  font-weight: 700;
+}
+
+.carte-projet p {
+  color: var(--blanc-ivoire);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #projets {
+    padding: 2em 1em;
+  }
+
+  .carte-projet {
+    padding: 1.2em 1.4em;
+  }
+
+  .carte-projet h2 {
+    font-size: 1.3rem;
+  }
+}
+
+
+
+/* === Contact === */
+.linkedin-link {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.linkedin-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #0A66C2; /* Bleu LinkedIn */
+  background: var(--blanc-ivoire);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+
+.linkedin-link a:hover {
+  transform: scale(1.05);
+}
+
+.linkedin-link img {
+  width: 24px;
+  height: 24px;
+}
+
+
+
+.github-link {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.github-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  background: gray;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+
+.github-link a:hover {
+  transform: scale(1.05);
+}
+
+
+.github-link img {
+  width: 24px;
+  height: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 1em;
+}
+
+input, textarea {
+  background: var(--gris-anthracite);
+  border: 1px solid var(--gris-clair);
+  color: var(--blanc-ivoire);
+  border-radius: 8px;
+  padding: 0.8em;
+}
+
+button[type="submit"] {
+  background: linear-gradient(90deg, var(--or-metallique), #bfa334);
+  color: var(--noir-profond);
+  padding: 0.8em 1.8em;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(212,175,55,0.5);
+}
+
+/* === Footer === */
+footer {
+  background: var(--noir-profond);
+  text-align: center;
+  padding: 1.5em 0;
+  color: var(--gris-clair);
+  border-top: 1px solid var(--gris-anthracite);
+  font-size: 0.9rem;
+}
+
+/* === Animation scroll === */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.visible {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 1.8rem; }
+  .nav-center ul { gap: 15px; }
+  #projets { flex-direction: column; align-items: center; }
+}
+
+.button {
+  background: linear-gradient(90deg, var(--or-metallique), #bfa334);
+  color: var(--noir-profond);
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(212,175,55,0.3);
+  display: inline-block;
+  text-decoration: none; /* Très important pour enlever le soulignement bleu des liens <a> */
+  text-align: center;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212,175,55,0.5);
+  filter: brightness(1.1);
+}
